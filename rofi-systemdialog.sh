@@ -29,11 +29,11 @@
 #
 
 _rofi () {
-    rofi -i -border 2 -width 100 -lines 10 -padding 12 -location 1 -color-normal "#000000,#6c6c6c,#000000,#005577,#b0b0b0" -color-window "#000000" -no-levenshtein-sort "$@"
+    rofi -i -border 2 -width 100 -lines 10 -padding 12 -location 1 -color-normal "#000000,#6c6c6c,#000000,#005577,#b0b0b0" -color-window "#000000" -no-levenshtein-sort -lines 8 "$@"
 }
 
 
-input=`echo "undock|undock and lock|dockhome|dockwork|quit i3|reboot|poweroff" | _rofi -sep '|' -dmenu -p "systemdialog:"`
+input=`echo "undock|undock and lock|lock|dockhome|dockwork|quit i3|reboot|poweroff" | _rofi -sep '|' -dmenu -p "systemdialog:"`
 
 
 case $input in
@@ -49,6 +49,10 @@ case $input in
     ¦   xrandr --output DP1 --off
     ¦   xrandr --output LVDS1 --auto
     ¦   xrandr --output VGA1 --off
+        i3lock -p win -u -t -i /usr/share/i3lock/windows_10_small.png
+        ;;
+
+    "lock")
         i3lock -p win -u -t -i /usr/share/i3lock/windows_10_small.png
         ;;
 
